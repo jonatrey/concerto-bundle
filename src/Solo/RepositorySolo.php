@@ -22,6 +22,9 @@ class RepositorySolo implements SoloInterface
 
     /** @var string */
     protected $repoMethodName;
+    
+     /** @var string */
++    protected $baseHost;
 
     /**
      * Constructs a RepositorySolo.
@@ -29,10 +32,11 @@ class RepositorySolo implements SoloInterface
      * @param EntityRepository $repo
      * @param string           $repoMethodName
      */
-    public function __construct(EntityRepository $repo, $repoMethodName)
+    public function __construct(EntityRepository $repo, $repoMethodName, $baseHost)
     {
         $this->repository = $repo;
         $this->repoMethodName = $repoMethodName;
+        $this->baseHost = $baseHost;
     }
 
     /**
@@ -48,7 +52,7 @@ class RepositorySolo implements SoloInterface
      */
     public function getSoloist(Request $request)
     {
-        $ret = $this->repository->{$this->repoMethodName}($request);
+        $ret = $this->repository->{$this->repoMethodName}($request, $this->baseHost);
 
         if(is_a( $ret, 'Ctrl\Bundle\ConcertoBundle\Model\Soloist' ) ) {
             return $ret;
