@@ -24,7 +24,7 @@ class RepositorySolo implements SoloInterface
     protected $repoMethodName;
     
      /** @var string */
-+    protected $baseHost;
+    protected $baseHost;
 
     /**
      * Constructs a RepositorySolo.
