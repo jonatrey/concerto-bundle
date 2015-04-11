@@ -142,6 +142,7 @@ concerto:
             arguments:
                 - @your_soloist_repository
                 - forRequest
+                - "%base_host%"
 ```
 ```yml
 # services.yml
